@@ -1,5 +1,7 @@
 var game = (function (){
-	
+
+	var ticker;
+
 	var key = {
 		LEFT :37,
 		RIGHT:39,
@@ -71,8 +73,7 @@ var game = (function (){
 				head.y = body[body.length-1].y + settings.dirY;
 			
 				body.push(head);
-			
-			
+
 				for (var j=0;j< body.length;j++){
 					settings.ctx.strokeRect(body[j].x*settings.width,body[j].y*settings.height, settings.width, settings.height);
 			
@@ -93,13 +94,13 @@ var game = (function (){
 			
 				snake.bodyCollisionDetect(body);
 
-				if (head.x === settings.height || head.x === settings.width || head.x < 0) {
-					alert("gameover");
-				} else if (head.y === settings.width || head.y === settings.height || head.y < 0){
+				if ((head.x === settings.height || head.x === settings.width || head.x < 0) ||
+                    (head.y === settings.width || head.y === settings.height || head.y < 0)) {
+                    clearInterval(ticker);
 					alert("gameover");
 				}
 			}
-			setInterval(moving,300);
+			ticker = setInterval(moving,300);
 		}
 	};
 
