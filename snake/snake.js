@@ -22,19 +22,15 @@ var game = (function (){
 		getRandomInt : function (min, max) {
   			return Math.floor(Math.random() * (max - min)) + min;
 		}
-		
 	};
 	
 	var food = {
-		
 		rndX : settings.getRandomInt(1,settings.width),
 		rndY : settings.getRandomInt(1,settings.height),
-		
 		colour: "#006400",
-		
 		dropApple: function(x,y){
 			settings.ctx.fillStyle = food.colour;
-			settings.ctx.fillRect(x*settings.width,y*settings.height,settings.width,settings.height);
+			settings.ctx.fillRect(x*settings.width, y*settings.height, settings.width, settings.height);
 		}
 	};
 	
@@ -62,8 +58,6 @@ var game = (function (){
 					y:10
 				});
 			}
-			
-			
 			function moving(){
 				settings.ctx.clearRect(0,0,canvas.width, canvas.height);
 				var head = {};
@@ -75,7 +69,11 @@ var game = (function (){
 				body.push(head);
 
 				for (var j=0;j< body.length;j++){
-					settings.ctx.strokeRect(body[j].x*settings.width,body[j].y*settings.height, settings.width, settings.height);
+					settings.ctx.strokeRect(
+						body[j].x * settings.width,body[j].y * settings.height,
+						settings.width,
+						settings.height
+					);
 			
 					if (body[j].x === food.rndX && body[j].y === food.rndY){
 						food.rndX = settings.getRandomInt(1,settings.width);
@@ -104,9 +102,7 @@ var game = (function (){
 		}
 	};
 
-
 	var init = function(){
-		
 		var btn = document.querySelector(".button");
 
 		document.addEventListener('keypress', function(e){
@@ -129,7 +125,6 @@ var game = (function (){
 	return {
 		load: init
 	};
-
 }());
 
 window.onload = function(){
