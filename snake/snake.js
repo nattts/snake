@@ -7,6 +7,8 @@ var game = (function (){
 		DOWN:40
 	};
 
+	var canvas = document.getElementById("canvas");
+	
 	var settings = {
 		canvas: document.getElementById("canvas"),
 		ctx: canvas.getContext('2d'),
