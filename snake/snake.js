@@ -35,8 +35,6 @@ var game = (function (){
 			settings.ctx.fillRect(x*settings.width,y*settings.height,settings.width,settings.height);
 		}
 	};
-
-
 	
 	var snake = {
 		bodyCollisionDetect: function(arr){
@@ -95,7 +93,7 @@ var game = (function (){
 			
 				snake.bodyCollisionDetect(body);
 
-				if (head.x === settings.height || head.x === settings.width ||head.x < 0) {
+				if (head.x === settings.height || head.x === settings.width || head.x < 0) {
 					alert("gameover");
 				} else if (head.y === settings.width || head.y === settings.height || head.y < 0){
 					alert("gameover");
@@ -109,19 +107,21 @@ var game = (function (){
 	var init = function(){
 		
 		var btn = document.querySelector(".button");
+
+		document.addEventListener('keypress', function(e){
+            if (e.keyCode === key.DOWN){
+                snake.dir(0,1);
+            } else if (e.keyCode === key.RIGHT){
+                snake.dir(1,0);
+            } else if (e.keyCode === key.UP){
+                snake.dir(0,-1);
+            } else if (e.keyCode === key.LEFT){
+                snake.dir(-1,0);
+            }
+        });
+
 		btn.addEventListener("click",function(){
 			snake.run();
-			document.addEventListener('keypress', function(e){
-				if (e.keyCode === key.DOWN){
-					snake.dir(0,1);
-				} else if (e.keyCode === key.RIGHT){
-					snake.dir(1,0);
-				} else if (e.keyCode === key.UP){
-					snake.dir(0,-1);
-				} else if (e.keyCode === key.LEFT){
-					snake.dir(-1,0);
-				}
-			});
 		});
 	};
 
