@@ -10,7 +10,7 @@ var game = (function (){
 	var canvas = document.getElementById("canvas");
 	
 	var settings = {
-		canvas: document.getElementById("canvas"),
+		canvas: canvas,
 		ctx: canvas.getContext('2d'),
 		width: 20,
 		height:20,
@@ -104,8 +104,8 @@ var game = (function (){
 			setInterval(moving,300);
 		}
 	};
-	
-	
+
+
 	var init = function(){
 		
 		var btn = document.querySelector(".button");
