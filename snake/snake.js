@@ -40,7 +40,8 @@ var game = (function (){
 			var body = arr.slice(0,arr.length-1);
 			for (var i=0;i<body.length;i++){
 				if (head.x === body[i].x && head.y === body[i].y){
-				alert("gameover");
+                    clearInterval(ticker);
+				    alert("gameover");
 				}
 			}
 		},
@@ -105,7 +106,7 @@ var game = (function (){
 	var init = function(){
 		var btn = document.querySelector(".button");
 
-		document.addEventListener('keypress', function(e){
+		document.addEventListener('keydown', function(e){
             if (e.keyCode === key.DOWN){
                 snake.dir(0,1);
             } else if (e.keyCode === key.RIGHT){
